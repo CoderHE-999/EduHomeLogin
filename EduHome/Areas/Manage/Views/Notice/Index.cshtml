@@ -1,0 +1,61 @@
+﻿@using EduHome.Models; 
+@model List<Notice>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="title">
+                <h1 style="display: inline-block;">Notice</h1>
+                <a asp-action="create" style="float:right" class="btn btn-primary">Create new</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@item.Date</td>
+                            <td>@item.Desc</td>
+                            
+                            <td class="d-flex justify-content-end">
+                                <a class="bg-success" asp-action="edit" asp-route-id="@item.Id">
+                                    <span>Edit <i class="far fa-edit ps-1"></i></span>
+                                </a>
+                                <a class="bg-danger" asp-action="delete" asp-route-id="@item.Id">
+                                    <span>Delete <i class="fas fa-trash ps-1"></i></span>
+                                </a>
+                            </td>
+                            
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+                
+
+
+            </div>
+        </div>
+    </div>
+</div>
